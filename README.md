@@ -1,66 +1,59 @@
-<h1>Rapport de l'inversion de contrôle et l'injection des dépendances</h1>
+<h1>Report on Inversion of Control and Dependency Injection</h1>
 <h2>Introduction</h2>
-<p>L'inversion de contrôle (IoC) est un processus qui permet de spécifier les dépendances d'un objet sans nécessiter leur création directe. Avec IoC, la création des objets est gérée par un conteneur, tel que Spring, qui assure l'injection des beans en 
-les reliant les uns aux autres de manière à satisfaire toutes leurs dépendances</p>
-<p>Cela va aider le développeur la possibilité de se focaliser sur la partie Métier de l'application</p>
-<p>Spring va s'occuper de l'injection des dépandences et toutes les fonctionnalités techniques</p>
-<h2>Ennoncé</h2>
+<p>Inversion of Control (IoC) is a process that allows specifying the dependencies of an object without requiring their direct creation. With IoC, the creation of objects is managed by a container, such as Spring, which handles the injection of beans by connecting them to each other to satisfy all their dependencies.</p>
+<p>This helps the developer to focus on the business part of the application.</p>
+<p>Spring takes care of dependency injection and all technical features.</p>
+<h2>Statement</h2>
 <ol>
-    <li>Couche DAO 
+    <li>DAO Layer
         <ul>
-            <li>créer l'interface IDao</li>
-            <li>créer une implémentation de l'interface IDao</li>
+            <li>Create the IDao interface</li>
+            <li>Create an implementation of the IDao interface</li>
         </ul>
     </li>
-    <li>Couche Métier
+    <li>Business Layer
         <ul>
-            <li>créer l'interface IMetier</li>
-            <li>créer une implémentation de l'interface IMetier</li>
+            <li>Create the IMetier interface</li>
+            <li>Create an implementation of the IMetier interface</li>
         </ul>
     </li>
-    <li>Couche Présentation
-        <p>Créer une application qui permet de faire l'injection des dépandences</p>
+    <li>Presentation Layer
+        <p>Create an application that allows dependency injection.</p>
         <ul>
-        <li>Instantiation statique</li>
-        <li>Instantiation dynamique</li>
-        <li>En utilisant Spring Framework
-            <ul>
-                <li>version XML</li>
-                <li>version Annotation</li>
-            </ul>
-        </li>
+            <li>Static Instantiation</li>
+            <li>Dynamic Instantiation</li>
+            <li>Using Spring Framework
+                <ul>
+                    <li>XML version</li>
+                    <li>Annotation version</li>
+                </ul>
+            </li>
         </ul>
     </li>
 </ol>
-<h2>Conception</h2>
-<h3>Principe du couplage faible</h3>
-<img src="asset/2.png" alt="conception image">
+<h2>Design</h2>
+<h3>Principle of Loose Coupling</h3>
+<img src="asset/2.png" alt="design image">
 <p>
-Pour utiliser le couplage faible, nous devons utiliser les interfaces.
-Considérons une classe DaoImpl qui implémente l'interface IDao, et une classe MetierImpl qui implémente l'interface IMetier.</p>
-<p>Si la classe MetierImpl est liée à l’interface IDao par une association, on dit que le classe MetierImpl et la classe IDaoImpl sont liées par un
-couplage faible.</p>
-<p>Cela signifie que la classe MetierImpl peut fonctionner avec n’importe quelle classe qui implémente l’interface IDao.
-En effet la classe MetierImpl ne connait que l’interface IDao. De ce fait n’importe quelle classe implémentant cette
-interface peut être associée à la classe MetierImpl, sans qu’il soit nécessaire de modifier quoi que se soit dans la
-classe MetierImpl.</p>
-<p>Avec le couplage faible, nous pourrons créer des applications fermées à la modification et ouvertes à
-l’extension.
-</p>
+To use loose coupling, we need to use interfaces.
+Consider a class DaoImpl that implements the IDao interface and a class MetierImpl that implements the IMetier interface.</p>
+<p>If the MetierImpl class is associated with the IDao interface, it is said that the MetierImpl class and the IDaoImpl class are linked by loose coupling.</p>
+<p>This means that the MetierImpl class can work with any class that implements the IDao interface.
+In fact, the MetierImpl class only knows the IDao interface. Therefore, any class implementing this
+interface can be associated with the MetierImpl class without the need to modify anything in the
+MetierImpl class.</p>
+<p>With loose coupling, we can create applications that are closed to modification and open to
+extension.</p>
 
-<h3>Presentation 1 Instantiation statique</h3>
-<img src="asset/pres1.png" alt="interface IDao">
+<h3>Presentation 1 Static Instantiation</h3>
+<img src="asset/pres1.png" alt="IDao interface">
 
-<h3>Presentation 2 Instantiation dynamique version Base de Données</h3>
-<img src="asset/pres2-1.png" alt="impl version base de données">
-<h3>Presentation 2 Instantiation dynamique version web service</h3>
+<h3>Presentation 2 Dynamic Instantiation, Database Version</h3>
+<img src="asset/pres2-1.png" alt="impl database version">
+<h3>Presentation 2 Dynamic Instantiation, Web Service Version</h3>
 <img src="asset/Pres2-2.png" alt="impl web service">
 <hr>
 <h3>Presentation Spring XML</h3>
-<img src="asset/PresXml2.png" alt="impl version base de données">
+<img src="asset/PresXml2.png" alt="impl database version">
 <h3>Presentation Spring Annotation</h3>
-<img src="asset/Annotation.png" alt="impl version base de données">
-
-
-
-
+<img src="asset/Annotation.png" alt="impl database version">
